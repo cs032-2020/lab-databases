@@ -49,10 +49,6 @@ public class Database {
    */
   void readCorpus(String filename) throws SQLException {
 
-    // I'm not sure if I should just delete all the SQL from this section,
-    // or have them do the entire thing?
-
-
     PreparedStatement prep =
             conn.prepareStatement("SELECT * from corpus WHERE filename=?");
     prep.setString(1, filename);
@@ -97,9 +93,6 @@ public class Database {
       rs.close();
       prep.close();
     }
-
-
-
   }
 
   /**
@@ -108,8 +101,6 @@ public class Database {
    */
   void readAll() throws SQLException {
 
-    //Also not sure if they should have to do this?
-    //the SQL is so simple idk if it's necessary.
     PreparedStatement prep = conn.prepareStatement("SELECT word.word FROM word;");
     ResultSet rs = prep.executeQuery();
     while (rs.next()) {
@@ -118,22 +109,6 @@ public class Database {
     rs.close();
     prep.close();
   }
-
-  /**
-   * Deletes a file from the database.
-   * @param filename filename to delete.
-   * @throws SQLException if deleting goes wrong.
-   */
-  void deleteCorpus(String filename) throws SQLException {
-    /*
-    * TODO: Delete all words associated with a corpus from the database.
-    *  This should be fairly simple if you've set up your tables correctly!
-    *
-    * (Hint: Look at the ON DELETE section of the handout)
-     */
-  }
-
-
 
 
   /**
@@ -156,7 +131,6 @@ public class Database {
     return freqMap;
   }
 
-
   /**
    * Returns a map containing the top 5 most common words in the database, mapped to
    * the number of times they occur,
@@ -177,18 +151,6 @@ public class Database {
     return instMap;
   }
 
-  /*
-   * I think there would ideally be one more "metadata" query, but I have no idea what that could be.
-   */
-
-
-
-
-
-
-
-
-
   /**
    * Retrieves all words that should be used.
    * @return words.
@@ -196,8 +158,6 @@ public class Database {
   public List<String> getWords() {
     return words;
   }
-
-
 }
 
 

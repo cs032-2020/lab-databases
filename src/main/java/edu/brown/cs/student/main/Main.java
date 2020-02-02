@@ -114,14 +114,9 @@ public final class Main {
               }
 
             }
-
-
-
-
           } else {
             db.readAll();
           }
-
           ac = new Autocorrector(db, prefix, whitespace, led);
 
           if (options.has("stats")) {
