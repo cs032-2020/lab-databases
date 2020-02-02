@@ -30,14 +30,12 @@ public class Database {
    * @param filename file name of SQLite3 database to open.
    * @throws SQLException if an error occurs in any SQL query.
    */
-  Database(String filename) throws SQLException {
+  Database(String filename) throws SQLException, ClassNotFoundException {
 
     /*
     * TODO: Initialize the database connection, turn foreign keys on,
     *  and then create the word and corpus tables if they do not exist.
      */
-
-
   }
 
 
@@ -47,7 +45,7 @@ public class Database {
    * @param filename name of file to read.
    * @throws SQLException if something goes wrong with a SQL query.
    */
-  void readCorpus(String filename) throws SQLException {
+  void readCorpus(String filename) throws SQLException, ClassNotFoundException {
 
     PreparedStatement prep =
             conn.prepareStatement("SELECT * from corpus WHERE filename=?");
